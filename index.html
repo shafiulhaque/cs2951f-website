@@ -441,112 +441,302 @@
 
     <!-- Schedule -->
     <section id="schedule" class="py-10">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between">
-          <h2 class="text-2xl font-bold tracking-tight">Schedule</h2>
-          <a
-            href="#"
-            class="text-sm font-semibold text-brand-700 hover:underline"
-            >Add to Calendar (ICS)</a
-          >
-        </div>
-        <div
-          class="mt-6 overflow-hidden rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-soft"
-        >
-          <table
-            class="min-w-full divide-y divide-slate-200 dark:divide-slate-800"
-          >
-            <thead class="bg-slate-50/60 dark:bg-slate-900/60">
-              <tr>
-                <th
-                  class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
-                >
-                  Week
-                </th>
-                <th
-                  class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
-                >
-                  Date
-                </th>
-                <th
-                  class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
-                >
-                  Topic
-                </th>
-                <th
-                  class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
-                >
-                  Readings
-                </th>
-                <th
-                  class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
-                >
-                  Notes
-                </th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
-              <tr>
-                <td class="px-4 py-3">1</td>
-                <td class="px-4 py-3">Sep 9</td>
-                <td class="px-4 py-3 font-semibold">
-                  Course intro · MDPs recap
-                </td>
-                <td class="px-4 py-3 text-sm">
-                  <a class="text-brand-700 hover:underline" href="#"
-                    >Sutton & Barto ch. 1–3</a
-                  >
-                </td>
-                <td class="px-4 py-3 text-sm">Slides, logistics</td>
-              </tr>
-              <tr>
-                <td class="px-4 py-3">1</td>
-                <td class="px-4 py-3">Sep 11</td>
-                <td class="px-4 py-3 font-semibold">
-                  Dynamic programming · planning
-                </td>
-                <td class="px-4 py-3 text-sm">
-                  <a class="text-brand-700 hover:underline" href="#"
-                    >Puterman ch. 1</a
-                  >
-                </td>
-                <td class="px-4 py-3 text-sm">Policy/value iteration lab</td>
-              </tr>
-              <tr>
-                <td class="px-4 py-3">2</td>
-                <td class="px-4 py-3">Sep 16</td>
-                <td class="px-4 py-3 font-semibold">
-                  Value-based RL · Q-learning
-                </td>
-                <td class="px-4 py-3 text-sm">
-                  <a class="text-brand-700 hover:underline" href="#"
-                    >Mnih et al. (2015)</a
-                  >
-                </td>
-                <td class="px-4 py-3 text-sm">HW1 out</td>
-              </tr>
-              <tr>
-                <td class="px-4 py-3">2</td>
-                <td class="px-4 py-3">Sep 18</td>
-                <td class="px-4 py-3 font-semibold">Policy gradients · PPO</td>
-                <td class="px-4 py-3 text-sm">
-                  <a class="text-brand-700 hover:underline" href="#"
-                    >Schulman et al. (2017)</a
-                  >
-                </td>
-                <td class="px-4 py-3 text-sm">HW1 help session</td>
-              </tr>
-              <!-- Add more rows as needed -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between">
+      <h2 class="text-2xl font-bold tracking-tight">Schedule</h2>
+      <a
+        href="#"
+        class="text-sm font-semibold text-brand-700 hover:underline"
+        >Add to Calendar (ICS)</a
+      >
+    </div>
+    <div
+      class="mt-6 overflow-hidden rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-soft"
+    >
+      <table
+        class="min-w-full divide-y divide-slate-200 dark:divide-slate-800"
+      >
+        <thead class="bg-slate-50/60 dark:bg-slate-900/60">
+          <tr>
+            <th
+              class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+            >
+              Week
+            </th>
+            <th
+              class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+            >
+              Date
+            </th>
+            <th
+              class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+            >
+              Topic
+            </th>
+            <th
+              class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+            >
+              Readings
+            </th>
+            <th
+              class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+            >
+              Notes
+            </th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+          <tr>
+            <td class="px-4 py-3">1</td>
+            <td class="px-4 py-3">Sep 4</td>
+            <td class="px-4 py-3 font-semibold">Introduction</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">2</td>
+            <td class="px-4 py-3">Sep 9</td>
+            <td class="px-4 py-3 font-semibold">Probability and Simple decisions</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">2</td>
+            <td class="px-4 py-3">Sep 11</td>
+            <td class="px-4 py-3 font-semibold">Algorithms for MDPs</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">3</td>
+            <td class="px-4 py-3">Sep 16</td>
+            <td class="px-4 py-3 font-semibold">Approximations and Search</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">3</td>
+            <td class="px-4 py-3">Sep 18</td>
+            <td class="px-4 py-3 font-semibold">Policy search</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">4</td>
+            <td class="px-4 py-3">Sep 23</td>
+            <td class="px-4 py-3 font-semibold">Policy gradient optimization</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">4</td>
+            <td class="px-4 py-3">Sep 25</td>
+            <td class="px-4 py-3 font-semibold">Bandits</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">5</td>
+            <td class="px-4 py-3">Sep 30</td>
+            <td class="px-4 py-3 font-semibold">Efficient exploration in bandits</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">5</td>
+            <td class="px-4 py-3">Oct 2</td>
+            <td class="px-4 py-3 font-semibold">Model-based RL</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">6</td>
+            <td class="px-4 py-3">Oct 7</td>
+            <td class="px-4 py-3 font-semibold">Model-based RL continued</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">Efficient exploration in MDPs</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">6</td>
+            <td class="px-4 py-3">Oct 9</td>
+            <td class="px-4 py-3 font-semibold">Model-free RL</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">7</td>
+            <td class="px-4 py-3">Oct 14</td>
+            <td class="px-4 py-3 font-semibold">Model-free RL continued</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">Q learning convergence</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">7</td>
+            <td class="px-4 py-3">Oct 16</td>
+            <td class="px-4 py-3 font-semibold">Tasks</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">8</td>
+            <td class="px-4 py-3">Oct 21</td>
+            <td class="px-4 py-3 font-semibold">Imitation learning continued</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">Expressing tasks with logic</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">8</td>
+            <td class="px-4 py-3">Oct 23</td>
+            <td class="px-4 py-3 font-semibold">POMDPs: Value iteration</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">9</td>
+            <td class="px-4 py-3">Oct 28</td>
+            <td class="px-4 py-3 font-semibold">POMDP controller search</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">9</td>
+            <td class="px-4 py-3">Oct 30</td>
+            <td class="px-4 py-3 font-semibold">Games: Matrix games</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">10</td>
+            <td class="px-4 py-3">Nov 4</td>
+            <td class="px-4 py-3 font-semibold">Games: Markov games</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">10</td>
+            <td class="px-4 py-3">Nov 6</td>
+            <td class="px-4 py-3 font-semibold">More games</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">11</td>
+            <td class="px-4 py-3">Nov 11</td>
+            <td class="px-4 py-3 font-semibold">Games: State uncertainty in games</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">11</td>
+            <td class="px-4 py-3">Nov 13</td>
+            <td class="px-4 py-3 font-semibold">Project discussion</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">12</td>
+            <td class="px-4 py-3">Nov 18</td>
+            <td class="px-4 py-3 font-semibold">Abstraction</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">12</td>
+            <td class="px-4 py-3">Nov 20</td>
+            <td class="px-4 py-3 font-semibold">TBD</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">13</td>
+            <td class="px-4 py-3">Nov 25</td>
+            <td class="px-4 py-3 font-semibold">TBD</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr class="bg-amber-50/50 dark:bg-amber-900/20">
+            <td class="px-4 py-3">—</td>
+            <td class="px-4 py-3 font-semibold">Nov 26-30</td>
+            <td class="px-4 py-3 font-semibold text-amber-700 dark:text-amber-300">Thanksgiving Recess</td>
+            <td class="px-4 py-3 text-sm text-amber-600 dark:text-amber-400">No classes</td>
+            <td class="px-4 py-3 text-sm text-amber-600 dark:text-amber-400">Break</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">14</td>
+            <td class="px-4 py-3">Dec 2</td>
+            <td class="px-4 py-3 font-semibold">Project presentations</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">14</td>
+            <td class="px-4 py-3">Dec 4</td>
+            <td class="px-4 py-3 font-semibold">Project presentations</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="text-slate-500">TBD</span>
+            </td>
+            <td class="px-4 py-3 text-sm text-slate-500">N/A</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
     <!-- Assignments -->
     <section id="assignments" class="py-10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold tracking-tight">Assignments</h2>
+        <h2 class="text-2xl font-bold tracking-tight">Assignments (TBD)</h2>
         <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <div
             class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
