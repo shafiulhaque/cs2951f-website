@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CS2951F · Learning & Sequential Decision Making</title>
+    <meta
+      name="description"
+      content="Course website for CS2951F: Learning and Sequential Decision Making"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
+            colors: {
+              brand: {
+                50: "#f5f7ff",
+                100: "#e8edff",
+                200: "#cfd9ff",
+                300: "#aabaff",
+                400: "#7b92ff",
+                500: "#556bff",
+                600: "#3d4eff",
+                700: "#303fde",
+                800: "#282fb0",
+                900: "#202686",
+              },
+            },
+            boxShadow: {
+              soft: "0 8px 30px rgba(0,0,0,0.06)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .backdrop-blur-safari {
+        backdrop-filter: saturate(180%) blur(12px);
+      }
+    </style>
+  </head>
+  <body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100">
+    <!-- Sticky Nav -->
+    <header
+      class="fixed top-0 left-0 right-0 z-50 border-b border-slate-200/60 dark:border-slate-800/60 bg-white/80 dark:bg-slate-950/70 backdrop-blur-safari"
+    >
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <a href="#top" class="flex items-center gap-3">
+            <span
+              class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-brand-600 text-white font-bold"
+              >F</span
+            >
+            <span class="font-semibold tracking-tight"
+              >CS2951F · Learning & SDM</span
+            >
+          </a>
+          <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+            <a class="hover:text-brand-600" href="#about">About</a>
+            <a class="hover:text-brand-600" href="#staff">Staff</a>
+            <a class="hover:text-brand-600" href="#schedule">Schedule</a>
+            <a class="hover:text-brand-600" href="#assignments">Assignments</a>
+            <a class="hover:text-brand-600" href="#syllabus">Syllabus</a>
+            <a class="hover:text-brand-600" href="#policies">Policies</a>
+            <a class="hover:text-brand-600" href="#resources">Resources</a>
+          </nav>
+          <div class="flex items-center gap-3">
+            <button
+              id="themeToggle"
+              class="rounded-xl border border-slate-200/80 dark:border-slate-800/80 px-3 py-1.5 text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-900"
+            >
+              Toggle theme
+            </button>
+            <button
+              id="menuBtn"
+              class="md:hidden rounded-xl border border-slate-200/80 dark:border-slate-800/80 p-2"
+              aria-label="Open Menu"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="h-5 w-5"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M3.75 5.25a.75.75 0 0 1 .75-.75h15a.75.75 0 0 1 0 1.5H4.5a.75.75 0 0 1-.75-.75Zm0 6.75c0-.414.336-.75.75-.75h15a.75.75 0 0 1 0 1.5H4.5a.75.75 0 0 1-.75-.75Zm.75 6a.75.75 0 0 0 0 1.5h15a.75.75 0 0 0 0-1.5H4.5Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- mobile -->
+        <div id="mobileMenu" class="md:hidden hidden pb-4">
+          <div class="grid gap-2 text-sm font-medium">
+            <a
+              class="rounded-lg px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-900"
+              href="#about"
+              >About</a
+            >
+            <a
+              class="rounded-lg px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-900"
+              href="#staff"
+              >Staff</a
+            >
+            <a
+              class="rounded-lg px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-900"
+              href="#schedule"
+              >Schedule</a
+            >
+            <a
+              class="rounded-lg px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-900"
+              href="#assignments"
+              >Assignments</a
+            >
+            <a
+              class="rounded-lg px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-900"
+              href="#syllabus"
+              >Syllabus</a
+            >
+            <a
+              class="rounded-lg px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-900"
+              href="#policies"
+              >Policies</a
+            >
+            <a
+              class="rounded-lg px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-900"
+              href="#resources"
+              >Resources</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="top" class="relative isolate pt-28 pb-16 sm:pt-32 sm:pb-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+              CS2951F · Learning & Sequential Decision Making
+            </h1>
+            <p
+              class="mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-300"
+            >
+              Graduate seminar on modern reinforcement learning and decision
+              making under uncertainty. We cover foundations and frontiers:
+              MDPs, POMDPs, planning, value-based and policy-gradient methods,
+              function approximation, representation learning, exploration,
+              offline RL, safety, and scalability.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3 text-sm">
+              <span
+                class="inline-flex items-center gap-2 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 px-3 py-1.5"
+                ><span class="i">📍</span> CIT · Room TBD</span
+              >
+              <span
+                class="inline-flex items-center gap-2 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 px-3 py-1.5"
+                ><span class="i">🗓️</span> Fall 2025 · Tue/Thu 1–2:20pm</span
+              >
+              <span
+                class="inline-flex items-center gap-2 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 px-3 py-1.5"
+                ><span class="i">💬</span> Piazza/Ed link</span
+              >
+              <span
+                class="inline-flex items-center gap-2 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 px-3 py-1.5"
+                ><span class="i">🧪</span> Python · JAX/PyTorch</span
+              >
+            </div>
+            <div class="mt-6 flex gap-3">
+              <a
+                href="#schedule"
+                class="rounded-2xl bg-brand-600 px-5 py-3 text-white font-semibold shadow-soft hover:bg-brand-700"
+                >View Schedule</a
+              >
+              <a
+                href="#syllabus"
+                class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 px-5 py-3 font-semibold hover:bg-slate-50 dark:hover:bg-slate-900"
+                >Syllabus</a
+              >
+            </div>
+          </div>
+          <div class="relative">
+            <div
+              class="absolute -inset-6 -z-10 rounded-3xl bg-gradient-to-br from-brand-600/10 via-transparent to-brand-600/10 blur-2xl"
+            ></div>
+            <div
+              class="overflow-hidden rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-soft"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1543722530-d2c3201371e7?q=80&w=1974&auto=format&fit=crop"
+                alt="Reinforcement learning diagram"
+                class="h-72 w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Announcements -->
+    <section id="announcements" class="py-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-6 flex items-center justify-between">
+          <h2 class="text-2xl font-bold tracking-tight">Announcements</h2>
+          <a
+            href="#"
+            class="text-sm font-semibold text-brand-700 hover:underline"
+            >RSS/ICS</a
+          >
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          <article
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <div
+              class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+            >
+              Sep 1
+            </div>
+            <h3 class="mt-1 font-semibold">
+              Welcome! First class on Tue Sep 9.
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300">
+              Please skim the syllabus and bring a laptop configured with Python
+              3.11. We will cover course logistics and a whirlwind review of
+              MDPs.
+            </p>
+          </article>
+          <article
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <div
+              class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+            >
+              Sep 3
+            </div>
+            <h3 class="mt-1 font-semibold">Project groups forming</h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300">
+              Submit your 2–3 sentence project pitch by Sep 20. We will match
+              teams by interest area (theory, robotics, offline RL, safety,
+              etc.).
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold tracking-tight">About</h2>
+        <div class="mt-4 grid gap-6 lg:grid-cols-3">
+          <div class="lg:col-span-2">
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+              This course explores
+              <strong>learning for sequential decision making</strong> under
+              uncertainty. We combine mathematical foundations—MDPs, POMDPs,
+              dynamic programming—with practical algorithms spanning model-free
+              and model-based RL, planning, and representation learning.
+              Emphasis is on <em>understanding</em> and
+              <em>building</em> systems that make decisions from interaction
+              data. Students will complete a research-style project and
+              reproduce recent results.
+            </p>
+            <ul class="mt-4 grid gap-2 text-slate-700 dark:text-slate-300">
+              <li>
+                • Prereqs: Linear algebra, probability, algorithms; prior ML
+                course recommended.
+              </li>
+              <li>
+                • Format: Lectures, paper discussions, coding labs, and a term
+                project.
+              </li>
+              <li>
+                • Tooling: Python, JAX or PyTorch, Weights & Biases (optional).
+              </li>
+            </ul>
+          </div>
+          <aside
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <h3 class="font-semibold">Quick Facts</h3>
+            <dl class="mt-3 space-y-2 text-sm">
+              <div class="flex justify-between">
+                <dt>Semester</dt>
+                <dd>Fall 2025</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt>Meets</dt>
+                <dd>Tue/Thu 1–2:20pm</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt>Location</dt>
+                <dd>CIT · Room TBD</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt>Credits</dt>
+                <dd>1.0</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt>Course number</dt>
+                <dd>CS2951F</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Staff -->
+    <section id="staff" class="py-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold tracking-tight">Course Staff</h2>
+        <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Instructor -->
+          <div
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <div class="flex items-center gap-4">
+              <img
+                class="h-16 w-16 rounded-xl object-cover"
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop"
+                alt="Instructor"
+              />
+              <div>
+                <div class="font-semibold">Instructor · Your Name</div>
+                <div class="text-sm text-slate-600 dark:text-slate-400">
+                  email@brown.edu
+                </div>
+                <div class="text-sm text-slate-600 dark:text-slate-400">
+                  Office hours: Tue 3–4pm
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TA -->
+          <div
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <div class="flex items-center gap-4">
+              <img
+                class="h-16 w-16 rounded-xl object-cover"
+                src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=400&auto=format&fit=crop"
+                alt="TA"
+              />
+              <div>
+                <div class="font-semibold">Head TA · Name</div>
+                <div class="text-sm text-slate-600 dark:text-slate-400">
+                  hta@brown.edu
+                </div>
+                <div class="text-sm text-slate-600 dark:text-slate-400">
+                  Office hours: Thu 10–11am
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <div class="flex items-center gap-4">
+              <img
+                class="h-16 w-16 rounded-xl object-cover"
+                src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=400&auto=format&fit=crop"
+                alt="TA"
+              />
+              <div>
+                <div class="font-semibold">UTA · Name</div>
+                <div class="text-sm text-slate-600 dark:text-slate-400">
+                  uta@brown.edu
+                </div>
+                <div class="text-sm text-slate-600 dark:text-slate-400">
+                  Office hours: Fri 2–3pm
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule -->
+    <section id="schedule" class="py-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between">
+          <h2 class="text-2xl font-bold tracking-tight">Schedule</h2>
+          <a
+            href="#"
+            class="text-sm font-semibold text-brand-700 hover:underline"
+            >Add to Calendar (ICS)</a
+          >
+        </div>
+        <div
+          class="mt-6 overflow-hidden rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-soft"
+        >
+          <table
+            class="min-w-full divide-y divide-slate-200 dark:divide-slate-800"
+          >
+            <thead class="bg-slate-50/60 dark:bg-slate-900/60">
+              <tr>
+                <th
+                  class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                >
+                  Week
+                </th>
+                <th
+                  class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                >
+                  Date
+                </th>
+                <th
+                  class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                >
+                  Topic
+                </th>
+                <th
+                  class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                >
+                  Readings
+                </th>
+                <th
+                  class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider"
+                >
+                  Notes
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+              <tr>
+                <td class="px-4 py-3">1</td>
+                <td class="px-4 py-3">Sep 9</td>
+                <td class="px-4 py-3 font-semibold">
+                  Course intro · MDPs recap
+                </td>
+                <td class="px-4 py-3 text-sm">
+                  <a class="text-brand-700 hover:underline" href="#"
+                    >Sutton & Barto ch. 1–3</a
+                  >
+                </td>
+                <td class="px-4 py-3 text-sm">Slides, logistics</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3">1</td>
+                <td class="px-4 py-3">Sep 11</td>
+                <td class="px-4 py-3 font-semibold">
+                  Dynamic programming · planning
+                </td>
+                <td class="px-4 py-3 text-sm">
+                  <a class="text-brand-700 hover:underline" href="#"
+                    >Puterman ch. 1</a
+                  >
+                </td>
+                <td class="px-4 py-3 text-sm">Policy/value iteration lab</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3">2</td>
+                <td class="px-4 py-3">Sep 16</td>
+                <td class="px-4 py-3 font-semibold">
+                  Value-based RL · Q-learning
+                </td>
+                <td class="px-4 py-3 text-sm">
+                  <a class="text-brand-700 hover:underline" href="#"
+                    >Mnih et al. (2015)</a
+                  >
+                </td>
+                <td class="px-4 py-3 text-sm">HW1 out</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3">2</td>
+                <td class="px-4 py-3">Sep 18</td>
+                <td class="px-4 py-3 font-semibold">Policy gradients · PPO</td>
+                <td class="px-4 py-3 text-sm">
+                  <a class="text-brand-700 hover:underline" href="#"
+                    >Schulman et al. (2017)</a
+                  >
+                </td>
+                <td class="px-4 py-3 text-sm">HW1 help session</td>
+              </tr>
+              <!-- Add more rows as needed -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Assignments -->
+    <section id="assignments" class="py-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold tracking-tight">Assignments</h2>
+        <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <div
+              class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+            >
+              HW1 · Out Sep 16 · Due Sep 30
+            </div>
+            <h3 class="mt-1 font-semibold">MDPs & Planning Lab</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Implement policy/value iteration; analyze convergence and
+              discounting; submit writeup + code.
+            </p>
+            <div class="mt-3 flex gap-3 text-sm">
+              <a
+                href="#"
+                class="rounded-xl border px-3 py-1.5 hover:bg-slate-50 dark:hover:bg-slate-900"
+                >PDF</a
+              >
+              <a
+                href="#"
+                class="rounded-xl border px-3 py-1.5 hover:bg-slate-50 dark:hover:bg-slate-900"
+                >Starter code</a
+              >
+            </div>
+          </div>
+          <div
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <div
+              class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+            >
+              HW2 · Out Oct 2 · Due Oct 16
+            </div>
+            <h3 class="mt-1 font-semibold">Deep Q-Learning</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Implement DQN and analyze stability tricks (target nets, replay).
+              Report learning curves.
+            </p>
+            <div class="mt-3 flex gap-3 text-sm">
+              <a
+                href="#"
+                class="rounded-xl border px-3 py-1.5 hover:bg-slate-50 dark:hover:bg-slate-900"
+                >PDF</a
+              >
+              <a
+                href="#"
+                class="rounded-xl border px-3 py-1.5 hover:bg-slate-50 dark:hover:bg-slate-900"
+                >Starter code</a
+              >
+            </div>
+          </div>
+          <div
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <div
+              class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+            >
+              Project · Pitch Sep 20 · Final Dec 12
+            </div>
+            <h3 class="mt-1 font-semibold">Research Project</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Original research or reproduction. Milestones: pitch, proposal,
+              midterm check-in, final report & poster.
+            </p>
+            <div class="mt-3 flex gap-3 text-sm">
+              <a
+                href="#"
+                class="rounded-xl border px-3 py-1.5 hover:bg-slate-50 dark:hover:bg-slate-900"
+                >Spec</a
+              >
+              <a
+                href="#"
+                class="rounded-xl border px-3 py-1.5 hover:bg-slate-50 dark:hover:bg-slate-900"
+                >FAQ</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Syllabus -->
+    <section id="syllabus" class="py-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold tracking-tight">Syllabus</h2>
+        <div class="mt-6 grid gap-6 md:grid-cols-2">
+          <div
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <h3 class="font-semibold">Topics</h3>
+            <ul
+              class="mt-3 list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300 text-sm"
+            >
+              <li>Markov decision processes, dynamic programming</li>
+              <li>Planning: heuristic search, MPC, model predictive control</li>
+              <li>Value-based and actor-critic methods</li>
+              <li>Function approximation, representation learning</li>
+              <li>POMDPs, memory, and belief-state planning</li>
+              <li>Exploration and intrinsic motivation</li>
+              <li>Offline RL and batch-constrained learning</li>
+              <li>Safe RL, robustness, and evaluation</li>
+              <li>RL at scale: distributed training and sim2real</li>
+            </ul>
+          </div>
+          <div
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <h3 class="font-semibold">Assessment</h3>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li class="flex justify-between">
+                <span>Homework (2–3)</span><span>35%</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Paper scribing/discussion lead</span><span>10%</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Participation</span><span>10%</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Project (proposal→poster)</span><span>45%</span>
+              </li>
+            </ul>
+            <p class="mt-3 text-xs text-slate-500 dark:text-slate-400">
+              Weights subject to slight adjustments; announced in class.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Policies -->
+    <section id="policies" class="py-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold tracking-tight">Policies</h2>
+        <div class="mt-6 grid gap-6 md:grid-cols-2">
+          <div
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <h3 class="font-semibold">Collaboration</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Discuss high-level ideas with peers; write code and text
+              independently. Cite all sources and collaborators. For projects,
+              work in teams of 2–3 unless otherwise approved.
+            </p>
+          </div>
+          <div
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <h3 class="font-semibold">Late Work</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              You have a 72-hour late budget across the term for homeworks (max
+              48h on any single HW). Projects follow milestone-specific rules.
+            </p>
+          </div>
+          <div
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <h3 class="font-semibold">Academic Integrity</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              We follow Brown's academic code. Use of generative tools must be
+              disclosed and is limited to editing/ideation; generated code must
+              be cited and validated.
+            </p>
+          </div>
+          <div
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <h3 class="font-semibold">Accessibility</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              We are committed to inclusive learning. Students with documented
+              accommodations should contact staff and SAS early; we will arrange
+              appropriate adjustments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resources / Links -->
+    <section id="resources" class="py-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold tracking-tight">Resources</h2>
+        <div class="mt-6 grid gap-6 md:grid-cols-3">
+          <div
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <h3 class="font-semibold">Communication</h3>
+            <ul class="mt-3 text-sm space-y-2">
+              <li>
+                <a class="text-brand-700 hover:underline" href="#"
+                  >Piazza / Ed</a
+                >
+              </li>
+              <li>
+                <a class="text-brand-700 hover:underline" href="#"
+                  >Gradescope</a
+                >
+              </li>
+              <li>
+                <a class="text-brand-700 hover:underline" href="#"
+                  >GitHub Org</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <h3 class="font-semibold">Texts</h3>
+            <ul class="mt-3 text-sm space-y-2">
+              <li>
+                <a class="text-brand-700 hover:underline" href="#"
+                  >Sutton & Barto: Reinforcement Learning</a
+                >
+              </li>
+              <li>
+                <a class="text-brand-700 hover:underline" href="#"
+                  >Puterman: Markov Decision Processes</a
+                >
+              </li>
+              <li>
+                <a class="text-brand-700 hover:underline" href="#"
+                  >Kochenderfer et al.: Algorithms for Decision Making</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-soft"
+          >
+            <h3 class="font-semibold">Software</h3>
+            <ul class="mt-3 text-sm space-y-2">
+              <li>
+                <a class="text-brand-700 hover:underline" href="#"
+                  >Conda / Mamba</a
+                >
+              </li>
+              <li>
+                <a class="text-brand-700 hover:underline" href="#"
+                  >JAX or PyTorch</a
+                >
+              </li>
+              <li>
+                <a class="text-brand-700 hover:underline" href="#"
+                  >W&B (optional)</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200/80 dark:border-slate-800/80 py-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div
+          class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center"
+        >
+          <div>
+            <div class="font-semibold">
+              CS2951F · Learning & Sequential Decision Making
+            </div>
+            <div class="text-sm text-slate-500 dark:text-slate-400">
+              © <span id="year"></span> Brown University · Computer Science
+            </div>
+          </div>
+          <div class="text-sm">
+            Contact:
+            <a
+              class="text-brand-700 hover:underline"
+              href="mailto:email@brown.edu"
+              >email@brown.edu</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Theme toggle
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("themeToggle");
+      const storedTheme =
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light");
+      if (storedTheme === "dark") root.classList.add("dark");
+      themeToggle?.addEventListener("click", () => {
+        root.classList.toggle("dark");
+        localStorage.setItem(
+          "theme",
+          root.classList.contains("dark") ? "dark" : "light"
+        );
+      });
+
+      // Mobile menu
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      menuBtn?.addEventListener("click", () =>
+        mobileMenu.classList.toggle("hidden")
+      );
+
+      // Year
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
